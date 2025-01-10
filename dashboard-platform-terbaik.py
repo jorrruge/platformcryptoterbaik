@@ -9,7 +9,11 @@ file_average = "AVERAGE Crypto.csv"
 
 # Function to load CSV file
 def load_csv(file_path):
-    return pd.read_csv(file_path)
+    try:
+        return pd.read_csv(file_path)
+    except Exception as e:
+        st.error(f"Error membaca file {file_path}: {e}")
+        return pd.DataFrame()
 
 # Streamlit App
 st.title("Visualisasi Data AHP, TOPSIS, SAW, dan AVERAGE")
